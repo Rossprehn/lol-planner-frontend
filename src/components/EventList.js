@@ -2,7 +2,7 @@ import React from 'react'
 
 export class Section extends React.Component {
   createListItem(item) {
-    // console.log(item)
+    console.log('LIST ITEMS ', item)
 
     return (
       <li key={item.event_id}>
@@ -21,12 +21,29 @@ export class Section extends React.Component {
       </li>
     )
   }
-
+  flattenEvents = allEventsArray => {
+    let eventId = []
+    let flatEventAryId = []
+    for (let i = 0; i < allEventsArray.length; i++) {
+      if (eventId.includes(allEventsArray[i].event_id) === false) {
+        eventId.push(allEventsArray[i].event_id)
+        flatEventAryId.push(allEventsArray[i])
+      }
+    }
+    console.log('FLAT EID: ', eventId)
+    console.log('flatEventsArray: ', flatEventAryId)
+    return flatEventAryId
+  }
   render() {
     return (
       <section>
         <h4>game</h4>
-        <ul id="game-events">{this.props.events.map(this.createListItem)}</ul>
+        {console.log('DATA:', this.props.events)}
+        <ul id="game-events">
+          {this.flattenEvents(this.props.events).map(item => {
+            return this.createListItem(item)
+          })}
+        </ul>
       </section>
     )
   }

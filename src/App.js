@@ -37,21 +37,22 @@ class App extends Component {
       })
   }
 
-  filterEvents = events => {
-    return this.state.events.reduce((newArray, eventValue) => {
-      if (eventValue.event_id !== eventValue.event_id) {
-        newArray.push(
-          eventValue.title,
-          eventValue.description,
-          eventValue.time,
-          eventValue.date,
-          eventValue.event_id
-        )
-      }
-      console.log(newArray)
-      return newArray
-    }, [])
-  }
+  // filterEvents = events => {
+  //   eliminate redundincies
+  //   return this.state.events.reduce((newArray, eventValue) => {
+  //     if (eventValue.event_id !== eventValue.event_id) {
+  //       newArray.push(
+  //         eventValue.title,
+  //         eventValue.description,
+  //         eventValue.time,
+  //         eventValue.date,
+  //         eventValue.event_id
+  //       )
+  //     }
+  //     console.log(newArray)
+  //     return newArray
+  //   }, [])
+  // }
 
   render() {
     return (
