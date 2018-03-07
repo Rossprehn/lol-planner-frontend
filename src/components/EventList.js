@@ -1,8 +1,10 @@
 import React from 'react'
 
+//Not being used at this time!
+
 export class Section extends React.Component {
   createListItem(item) {
-    console.log('LIST ITEMS ', item)
+    // console.log('LIST ITEMS ', item)
 
     return (
       <li key={item.event_id}>
@@ -10,8 +12,8 @@ export class Section extends React.Component {
         <small>Date: {item.date}</small>
         <p>Time: {item.time}</p>
         <p>Description: {item.description}</p>
-        <ul key={item.event_id}>
-          <li>
+        <ul key={item.player_id}>
+          <li className="">
             <h4>player name: {item.name}</h4>
             <p>Primary Role: {item.primary}</p>
             <p>Secondary Role: {item.secondary}</p>
