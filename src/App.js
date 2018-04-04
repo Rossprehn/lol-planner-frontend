@@ -3,6 +3,7 @@ import logo from './logo.svg'
 import Header from './components/Header.js'
 import { Section } from './components/EventListings.js'
 import { List } from './components/Players.js'
+import Add from './components/AddNewEvent.js'
 
 import './App.css'
 
@@ -15,7 +16,11 @@ class App extends Component {
   }
 
   componentDidMount() {
-    fetch(baseUrl)
+    this.getEvents()
+  }
+
+  getEvents = () => {
+    fetch('https://lol-planner.herokuapp.com/')
       .then(response => response.json())
       .then(data => {
         this.setState({
@@ -25,46 +30,46 @@ class App extends Component {
       })
   }
 
-  addevent = event => {
-    var url = baseUrl + 'events'
-    fetch(url, {
-      method: 'POST', // or 'PUT'
+  onSubmit = e => {
+    e.preventDefault()
+    const form = e.target
+    const data = new FormData(form)
+    const events = this.state.events
+    const event = {
+      title: data.get('title'),
+      date: data.get('date'),
+      time: data.get('time'),
+      description: data.get('description')
+    }
+    this.addEvent(event)
+    this.setState({ events })
+    e.target.reset()
+  }
+
+  addEvent = event => {
+    fetch('https://lol-planner.herokuapp.com/event', {
+      method: 'POST',
       body: JSON.stringify(event),
       headers: new Headers({
         'Content-Type': 'application/json'
       })
     })
       .then(res => res.json())
-      .then(res => {
-        window.location.href = './success'
-        return res
-      })
       .then(data => {
-        this.setState({ events: data })
+        this.getEvents()
       })
       .catch(error => console.error('Error:', error))
   }
-
-  // used for the join table (will return someday)
-  // componentDidMount() {
-  //   this.getEvents()
-  // }
-  //
-  // getEvents = () => {
-  //   fetch(baseUrl + 'event_players')
-  //     .then(res => res.json())
-  //     .then(events => {
-  //       this.setState({ events: events })
-  //       // this.filterEvents(events)
-  //     })
-  // }
 
   render() {
     return (
       <div className="App">
         <Header />
+        <Add onSubmit={this.onSubmit} />
+
         <Section events={this.state.events} />
         <List players={this.state.players} />
+        <h3>ADD A QUESTION</h3>
       </div>
     )
   }
