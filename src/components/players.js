@@ -1,10 +1,12 @@
 import React from 'react'
 import { Modal, Button } from 'react-bootstrap'
+import Add from './AddNewPlayer.js'
 
 export class List extends React.Component {
   constructor(props) {
     super(props)
     // this.handleitem = this.handleitem.bind(this)
+    this.createListPlayers = this.createListPlayers.bind(this)
     this.deletePlayer = this.deletePlayer.bind(this)
     // this.updatePlayer = this.updatePlayer.bind(this)
   }
@@ -21,23 +23,44 @@ export class List extends React.Component {
       headers: new Headers({
         'Content-Type': 'application/json'
       })
-    }).catch(error => console.error('Error', error))
+    })
+      .then(response => this.props.getEvents())
+      .catch(error => console.error('Error', error))
   }
   onDelete = e => {
     e.preventDefault()
   }
 
-  // renderDeleteButton = item => {
-  //   if (item.id > 3) {
-  //     return (
-  //       <div onClick={this.handleClose}>
-  //         <button className="delete" onClick={() => this.deleteThisPlayer(item.id)}>
-  //           <h3>DELETE</h3>
-  //         </button>
-  //       </div>
-  //     )
-  //   }
-  // }
+  onSubmit = e => {
+    e.preventDefault()
+    const form = e.target
+    const data = new FormData(form)
+    const players = this.state.players
+    const player = {
+      name: data.get('name'),
+      primary: data.get('primary'),
+      secondary: data.get('secondary'),
+      rank: data.get('rank')
+    }
+    this.addPlayer(player)
+    this.setState({ players })
+    e.target.reset()
+  }
+
+  addPlayer = player => {
+    fetch('https://lol-planner.herokuapp.com/players', {
+      method: 'POST',
+      body: JSON.stringify(player),
+      headers: new Headers({
+        'Content-Type': 'application/json'
+      })
+    })
+      .then(res => res.json())
+      .then(data => {
+        this.getEvents()
+      })
+      .catch(error => console.error('Error:', error))
+  }
 
   createListPlayers(item) {
     return (
@@ -58,6 +81,7 @@ export class List extends React.Component {
       <section>
         <h4>players</h4>
         <ul id="game-players">{this.props.players.map(this.createListPlayers)}</ul>
+        <Add onSubmit={this.onSubmit} />
       </section>
     )
   }

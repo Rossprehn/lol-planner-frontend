@@ -3,7 +3,7 @@ import logo from './logo.svg'
 import Header from './components/Header.js'
 import { Section } from './components/EventListings.js'
 import { List } from './components/Players.js'
-import Add from './components/AddNewEvent.js'
+import AddEvent from './components/AddNewEvent.js'
 
 import './App.css'
 
@@ -65,10 +65,10 @@ class App extends Component {
     return (
       <div className="App">
         <Header />
-        <Add onSubmit={this.onSubmit} />
+        <AddEvent onSubmit={this.onSubmit} />
 
         <Section events={this.state.events} getEvents={this.getEvents} />
-        <List players={this.state.players} />
+        <List players={this.state.players} getEvents={this.getEvents} />
         <h3>ADD A QUESTION</h3>
       </div>
     )
