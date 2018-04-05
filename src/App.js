@@ -67,7 +67,7 @@ class App extends Component {
         <Header />
         <Add onSubmit={this.onSubmit} />
 
-        <Section events={this.state.events} />
+        <Section events={this.state.events} getEvents={this.getEvents} />
         <List players={this.state.players} />
         <h3>ADD A QUESTION</h3>
       </div>
