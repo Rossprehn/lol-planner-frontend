@@ -1,16 +1,36 @@
 import React from 'react'
+import { Button, Icon, Select, Modal } from 'antd'
 
 export class Section extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      toggleClass: true,
-      togglePanels: []
+      visible: false
     }
+
     // this.toggleFunction = this.toggleFunction.bind(this)
+
     this.createListItem = this.createListItem.bind(this)
     this.deleteEvent = this.deleteEvent.bind(this)
     this.updateEvent = this.updateEvent.bind(this)
+  }
+
+  showModal = () => {
+    this.setState({
+      visible: true
+    })
+  }
+  handleOk = e => {
+    console.log(e)
+    this.setState({
+      visible: false
+    })
+  }
+  handleCancel = e => {
+    console.log(e)
+    this.setState({
+      visible: false
+    })
   }
 
   updateEvent = e => {
@@ -38,17 +58,6 @@ export class Section extends React.Component {
     this.deleteThisEvent(data.get('id'))
   }
 
-  // toggleFunction = item => {
-  //   const { togglePanels } = this.state
-  //   const index = togglePanels.indexOf(item.id)
-  //   if (index !== -1) {
-  //     togglePanels.splice(index, 1)
-  //   } else {
-  //     togglePanels.push(item.id)
-  //   }
-  //   this.setState({ togglePanels })
-  // }
-
   createListItem(item) {
     return (
       <li key={item.event_id}>
@@ -57,12 +66,52 @@ export class Section extends React.Component {
         <p>Time: {item.time}</p>
         <p>Description: {item.description}</p>
         <div>
-          <button className="delete" onClick={() => this.deleteThisEvent(item.id)}>
+          <Button type="danger" className="delete" onClick={() => this.deleteThisEvent(item.id)}>
             Delete
-          </button>
-          <button className="update" onClick={() => this.props.updateEventObj(item)}>
+          </Button>
+          <Button type="primary" onClick={this.showModal}>
             Update
-          </button>
+          </Button>
+          <Modal
+            title="Basic Modal"
+            visible={this.state.visible}
+            onOk={this.handleOk}
+            onCancel={this.handleCancel}
+          >
+            <form className="update-form" onSubmitUpdate={this.props.onSubmitUpdate}>
+              <label htmlFor="title" />
+              <input
+                type="text"
+                name="title"
+                rows="2"
+                cols="50"
+                id="title"
+                defaultValue={item.title}
+              />
+              <label htmlFor="date" />
+              <input
+                type="text"
+                name="date"
+                rows="2"
+                cols="50"
+                id="date"
+                defaultValue={item.date}
+              />
+              <label htmlFor="time" />
+              <input type="text" name="time" id="time" size="20" defaultValue={item.time} />
+              <label htmlFor="description" />
+              <input
+                type="text"
+                name="description"
+                id="description"
+                size="35"
+                defaultValue={item.description}
+              />
+              <button type="submit" value="Submit">
+                <h3>SUBMIT</h3>
+              </button>
+            </form>
+          </Modal>
         </div>
       </li>
     )

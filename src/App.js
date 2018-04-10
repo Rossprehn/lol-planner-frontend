@@ -61,13 +61,47 @@ class App extends Component {
       .catch(error => console.error('Error:', error))
   }
 
+  onSubmitUpdate = e => {
+    e.preventDefault()
+    const form = e.target
+    const data = new FormData(form)
+    const events = this.state.events
+    const event = {
+      title: data.get('title'),
+      date: data.get('date'),
+      time: data.get('time'),
+      description: data.get('description')
+    }
+    this.updateEvent(event)
+  }
+
+  updateQuestion = event => {
+    let url = 'https://lol-planner.herokuapp.com/event' + event.id
+    fetch(url, {
+      method: 'PUT',
+      body: JSON.stringify(event),
+      headers: new Headers({
+        'Content-Type': 'application/json'
+      })
+    })
+      .then(res => res.json())
+      .then(data => {
+        this.getEvents()
+      })
+      .catch(error => console.error('Error:', error))
+  }
+
   render() {
     return (
       <div className="App">
         <Header />
         <AddEvent onSubmit={this.onSubmit} />
 
-        <Section events={this.state.events} getEvents={this.getEvents} />
+        <Section
+          events={this.state.events}
+          getEvents={this.getEvents}
+          onSubmitUpdate={this.onSubmitUpdate}
+        />
         <List players={this.state.players} getEvents={this.getEvents} />
         <h3>ADD A QUESTION</h3>
       </div>
