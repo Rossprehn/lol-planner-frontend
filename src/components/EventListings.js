@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button, Icon, Select, Modal } from 'antd'
+import { Button, Icon, Select, Modal, Calendar } from 'antd'
 
 export class Section extends React.Component {
   constructor(props) {
@@ -69,6 +69,10 @@ export class Section extends React.Component {
           <Button type="danger" className="delete" onClick={() => this.deleteThisEvent(item.id)}>
             Delete
           </Button>
+          <Button id="delete" onClick={() => this.deleteThisEvent(item.id)} type="danger">
+            Delete <Icon type="delete" />
+          </Button>
+
           <Button type="primary" onClick={this.showModal}>
             Update
           </Button>
