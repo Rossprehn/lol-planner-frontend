@@ -25,6 +25,7 @@ export class Section extends React.Component {
       visible: false
     })
   }
+
   handleCancel = e => {
     console.log(e)
     this.setState({
@@ -106,7 +107,7 @@ export class Section extends React.Component {
                 size="35"
                 defaultValue={item.description}
               />
-              <input type="text" name="id" defaultValue={item.id} id="id" />
+              <input type="hidden" name="id" defaultValue={item.id} id="id" />
               <button type="submit" value="Submit">
                 <h3>SUBMIT</h3>
               </button>
