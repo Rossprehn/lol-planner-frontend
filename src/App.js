@@ -67,16 +67,18 @@ class App extends Component {
     const data = new FormData(form)
     const events = this.state.events
     const event = {
+      id: data.get('id'),
       title: data.get('title'),
       date: data.get('date'),
       time: data.get('time'),
       description: data.get('description')
     }
+    console.log(event)
     this.updateEvent(event)
   }
 
-  updateQuestion = event => {
-    let url = 'https://lol-planner.herokuapp.com/event' + event.id
+  updateEvent = event => {
+    let url = 'https://lol-planner.herokuapp.com/event/' + event.id
     fetch(url, {
       method: 'PUT',
       body: JSON.stringify(event),

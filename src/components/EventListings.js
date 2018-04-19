@@ -12,7 +12,6 @@ export class Section extends React.Component {
 
     this.createListItem = this.createListItem.bind(this)
     this.deleteEvent = this.deleteEvent.bind(this)
-    this.updateEvent = this.updateEvent.bind(this)
   }
 
   showModal = () => {
@@ -31,10 +30,6 @@ export class Section extends React.Component {
     this.setState({
       visible: false
     })
-  }
-
-  updateEvent = e => {
-    this.props.updateEvent(this.state.item)
   }
 
   deleteEvent = e => {
@@ -82,7 +77,7 @@ export class Section extends React.Component {
             onOk={this.handleOk}
             onCancel={this.handleCancel}
           >
-            <form className="update-form" onSubmitUpdate={this.props.onSubmitUpdate}>
+            <form className="update-form" onSubmit={this.props.onSubmitUpdate}>
               <label htmlFor="title" />
               <input
                 type="text"
@@ -111,6 +106,7 @@ export class Section extends React.Component {
                 size="35"
                 defaultValue={item.description}
               />
+              <input type="text" name="id" defaultValue={item.id} id="id" />
               <button type="submit" value="Submit">
                 <h3>SUBMIT</h3>
               </button>
