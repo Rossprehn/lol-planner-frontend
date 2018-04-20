@@ -103,7 +103,7 @@ export class Section extends React.Component {
                 size="35"
                 defaultValue={item.description}
               />
-              <input type="hidden" name="id" defaultValue={item.id} id="id" />
+              <input type="text" name="id" defaultValue={item.id} id="id" />
               <button type="submit" value="Submit">
                 <h3>SUBMIT</h3>
               </button>

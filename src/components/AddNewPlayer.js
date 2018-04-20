@@ -1,8 +1,8 @@
 import React from 'react'
 
-export default function Form({ onPlayerSubmit }) {
+export default function Form({ onSubmit }) {
   return (
-    <form className="addform" id="form" onSubmit={onPlayerSubmit}>
+    <form className="addform" id="form" onSubmit={onSubmit}>
       <label htmlFor="name" />
       <input name="name" type="text" side="20" id="name" placeholder="Enter name here..." />
       <label htmlFor="primary" />

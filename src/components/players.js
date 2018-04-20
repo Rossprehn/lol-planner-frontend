@@ -39,7 +39,7 @@ export class List extends React.Component {
   }
 
   deleteThisPlayer = id => {
-    return fetch('https://lol-planner.herokuapp.com/playes' + id, {
+    return fetch('https://lol-planner.herokuapp.com/players/' + id, {
       method: 'DELETE',
       headers: new Headers({
         'Content-Type': 'application/json'
@@ -52,11 +52,10 @@ export class List extends React.Component {
     e.preventDefault()
   }
 
-  onPlayerSubmit = e => {
+  onSubmit = e => {
     e.preventDefault()
     const form = e.target
     const data = new FormData(form)
-    console.log(data)
     const players = this.state.players
     const player = {
       name: data.get('name'),
@@ -64,6 +63,7 @@ export class List extends React.Component {
       secondary: data.get('secondary'),
       rank: data.get('rank')
     }
+    console.log(player)
     this.addPlayer(player)
     this.setState({ players })
     e.target.reset()
@@ -109,7 +109,7 @@ export class List extends React.Component {
         <ul id="game-players">{this.props.players.map(this.createListPlayers)}</ul>
         <div>
           <Button type="primary" onClick={this.showModal}>
-            Add Event <Icon type="plus" />
+            Add Player <Icon type="plus" />
           </Button>
           <Modal
             title="Add Player"
@@ -118,7 +118,7 @@ export class List extends React.Component {
             onCancel={this.handleCancel}
             footer={null}
           >
-            <Add onPlayerSubmit={this.onPlayerSubmit} />
+            <Add onSubmit={this.onSubmit} />
           </Modal>
         </div>
       </section>
