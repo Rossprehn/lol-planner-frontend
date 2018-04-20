@@ -92,9 +92,13 @@ export class List extends React.Component {
         <h4>Roles</h4>
         <p>primary : {item.primary}</p>
         <p>secondary: {item.secondary}</p>
-        <button className="delete" onClick={() => this.deleteThisPlayer(item.id)}>
-          <h3>DELETE</h3>
-        </button>
+
+        <Button type="danger" className="delete" onClick={() => this.deleteThisPlayer(item.id)}>
+          Delete <Icon type="delete" />
+        </Button>
+        <Button type="primary" onClick={this.showModal}>
+          Update <Icon type="edit" />
+        </Button>
       </li>
     )
   }
@@ -108,7 +112,7 @@ export class List extends React.Component {
             Add Event <Icon type="plus" />
           </Button>
           <Modal
-            title="Add Event"
+            title="Add Player"
             visible={this.state.visible}
             onOk={this.handleOk}
             onCancel={this.handleCancel}
