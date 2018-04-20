@@ -63,17 +63,13 @@ export class Section extends React.Component {
         <p>Description: {item.description}</p>
         <div>
           <Button type="danger" className="delete" onClick={() => this.deleteThisEvent(item.id)}>
-            Delete
-          </Button>
-          <Button id="delete" onClick={() => this.deleteThisEvent(item.id)} type="danger">
             Delete <Icon type="delete" />
           </Button>
-
           <Button type="primary" onClick={this.showModal}>
-            Update
+            Update <Icon type="edit" />
           </Button>
           <Modal
-            title="Basic Modal"
+            title="update this event"
             visible={this.state.visible}
             onOk={this.handleOk}
             onCancel={this.handleCancel}

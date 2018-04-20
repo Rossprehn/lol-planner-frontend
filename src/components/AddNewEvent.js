@@ -4,9 +4,9 @@ export default function Form({ onSubmit }) {
   return (
     <form className="addform" id="form" onSubmit={onSubmit}>
       <label htmlFor="title" />
-      <textarea name="title" rows="2" cols="50" id="title" placeholder="Enter title here..." />
+      <input name="title" rows="2" cols="50" id="title" placeholder="Enter title here..." />
       <label htmlFor="date" />
-      <textarea name="date" rows="2" cols="50" id="date" placeholder="Enter date here..." />
+      <input name="date" rows="2" cols="50" id="date" placeholder="Enter date here..." />
       <label htmlFor="time" />
       <input type="text" name="time" id="time" size="20" placeholder="Enter time of event..." />
       <label htmlFor="description" />
