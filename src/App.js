@@ -8,7 +8,8 @@ import { Modal, Button, Icon } from 'antd'
 
 import './App.css'
 
-var baseUrl = 'https://lol-planner.herokuapp.com/'
+// var baseUrl = 'https://lol-planner.herokuapp.com/'
+var baseUrl = 'http://localhost:3000'
 
 class App extends Component {
   state = {

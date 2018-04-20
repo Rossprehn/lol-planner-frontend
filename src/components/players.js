@@ -1,6 +1,7 @@
 import React from 'react'
 import Add from './AddNewPlayer.js'
 import { Button, Icon, Select, Modal } from 'antd'
+import ListPlayers from './ListPlayers'
 
 export class List extends React.Component {
   constructor(props) {
@@ -79,27 +80,19 @@ export class List extends React.Component {
     })
       .then(res => res.json())
       .then(data => {
-        this.getEvents()
+        this.props.getEvents()
       })
       .catch(error => console.error('Error:', error))
   }
 
   createListPlayers(item) {
     return (
-      <li key={item.player_id}>
-        <h3>Player Name: {item.name}</h3>
-        <p>Rank: {item.rank}</p>
-        <h4>Roles</h4>
-        <p>primary : {item.primary}</p>
-        <p>secondary: {item.secondary}</p>
-
-        <Button type="danger" className="delete" onClick={() => this.deleteThisPlayer(item.id)}>
-          Delete <Icon type="delete" />
-        </Button>
-        <Button type="primary" onClick={this.showModal}>
-          Update <Icon type="edit" />
-        </Button>
-      </li>
+      <ListPlayers
+        key={item.id}
+        item={item}
+        deleteThisPlayer={this.deleteThisPlayer}
+        onSubmitUpdate={this.props.onSubmitUpdate}
+      />
     )
   }
   render() {
