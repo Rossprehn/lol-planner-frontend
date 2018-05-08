@@ -48,6 +48,7 @@ export default class ListItem extends React.Component {
             visible={this.state.visible}
             onOk={this.handleOk}
             onCancel={this.handleCancel}
+            footer={null}
           >
             <form className="update-form" onSubmit={this.props.onSubmitUpdate}>
               <label htmlFor="title" />

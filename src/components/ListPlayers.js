@@ -36,7 +36,7 @@ export default class ListPlayers extends React.Component {
         <Button
           type="danger"
           className="delete"
-          onClick={() => this.deleteThisPlayer(this.props.item.id)}
+          onClick={() => this.props.deleteThisPlayer(this.props.item.id)}
         >
           Delete <Icon type="delete" />
         </Button>
@@ -48,6 +48,7 @@ export default class ListPlayers extends React.Component {
           visible={this.state.visible}
           onOk={this.handleOk}
           onCancel={this.handleCancel}
+          footer={null}
         >
           <form className="update-form" onSubmit={this.props.onSubmitUpdate}>
             <label htmlFor="name" />
@@ -84,6 +85,8 @@ export default class ListPlayers extends React.Component {
               size="35"
               defaultValue={this.props.item.rank}
             />
+            <input type="text" name="id" defaultValue={this.props.item.id} id="id" />
+
             <button type="submit" value="Submit">
               <h3>SUBMIT</h3>
             </button>

@@ -8,7 +8,6 @@ export class Section extends React.Component {
     this.createListItem = this.createListItem.bind(this)
     this.deleteEvent = this.deleteEvent.bind(this)
   }
-  // this.toggleFunction = this.toggleFunction.bind(this)
 
   deleteEvent = e => {
     this.props.deleteEvent(this.state.item)

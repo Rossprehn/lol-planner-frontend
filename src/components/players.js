@@ -49,8 +49,11 @@ export class List extends React.Component {
       .then(response => this.props.getEvents())
       .catch(error => console.error('Error', error))
   }
+
   onDelete = e => {
     e.preventDefault()
+    const data = new FormData(e.target)
+    this.deleteThisEvent(data.get('id'))
   }
 
   onSubmit = e => {
@@ -85,13 +88,45 @@ export class List extends React.Component {
       .catch(error => console.error('Error:', error))
   }
 
+  onSubmitUpdate = e => {
+    e.preventDefault()
+    const form = e.target
+    const data = new FormData(form)
+    const players = this.state.players
+    const player = {
+      id: data.get('id'),
+      name: data.get('name'),
+      primary: data.get('primary'),
+      secondary: data.get('secondary'),
+      rank: data.get('rank')
+    }
+    console.log(player)
+    this.updateEvent(player)
+  }
+
+  updateEvent = player => {
+    let url = 'https://lol-planner.herokuapp.com/players/' + player.id
+    fetch(url, {
+      method: 'PUT',
+      body: JSON.stringify(player),
+      headers: new Headers({
+        'Content-Type': 'application/json'
+      })
+    })
+      .then(res => res.json())
+      .then(data => {
+        this.props.getEvents()
+      })
+      .catch(error => console.error('Error:', error))
+  }
+
   createListPlayers(item) {
     return (
       <ListPlayers
         key={item.id}
         item={item}
         deleteThisPlayer={this.deleteThisPlayer}
-        onSubmitUpdate={this.props.onSubmitUpdate}
+        onSubmitUpdate={this.onSubmitUpdate}
       />
     )
   }
