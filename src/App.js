@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import logo from './logo.svg'
-import Header from './components/Header.js'
+import Header from './components/header/Header.js'
 import { Section } from './components/EventListings.js'
 import { List } from './components/Players.js'
 import AddEvent from './components/AddNewEvent.js'
