@@ -7,7 +7,7 @@ import AddEvent from './components/AddNewEvent.js'
 import { Modal, Button, Icon } from 'antd'
 
 import './css/reset.css'
-import './App.css'
+// import './App.css'
 
 // var baseUrl = 'https://lol-planner.herokuapp.com/'
 var baseUrl = 'http://localhost3000'
