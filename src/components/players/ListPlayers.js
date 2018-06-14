@@ -51,41 +51,49 @@ export default class ListPlayers extends React.Component {
           footer={null}
         >
           <form className="update-form" onSubmit={this.props.onSubmitUpdate}>
-            <label htmlFor="name" />
-            <input
-              type="text"
-              name="name"
-              rows="2"
-              cols="50"
-              id="name"
-              defaultValue={this.props.item.name}
-            />
-            <label htmlFor="primary" />
-            <input
-              type="text"
-              name="primary"
-              rows="2"
-              cols="50"
-              id="primary"
-              defaultValue={this.props.item.primary}
-            />
-            <label htmlFor="secondary" />
-            <input
-              type="text"
-              name="secondary"
-              id="secondary"
-              size="20"
-              defaultValue={this.props.item.secondary}
-            />
-            <label htmlFor="rank" />
-            <input
-              type="text"
-              name="rank"
-              id="rank"
-              size="35"
-              defaultValue={this.props.item.rank}
-            />
-            <input type="text" name="id" defaultValue={this.props.item.id} id="id" />
+            <label htmlFor="name">
+              name:
+              <input
+                type="text"
+                name="name"
+                rows="2"
+                cols="50"
+                id="name"
+                defaultValue={this.props.item.name}
+              />
+            </label>
+            <label htmlFor="primary">
+              Primary role:
+              <input
+                type="text"
+                name="primary"
+                rows="2"
+                cols="50"
+                id="primary"
+                defaultValue={this.props.item.primary}
+              />
+            </label>
+            <label htmlFor="secondary">
+              Secondary Role:
+              <input
+                type="text"
+                name="secondary"
+                id="secondary"
+                size="20"
+                defaultValue={this.props.item.secondary}
+              />
+            </label>
+            <label htmlFor="rank">
+              Rank:
+              <input
+                type="text"
+                name="rank"
+                id="rank"
+                size="35"
+                defaultValue={this.props.item.rank}
+              />
+            </label>
+            <input type="hidden" name="id" defaultValue={this.props.item.id} id="id" />
 
             <button type="submit" value="Submit">
               <h3>SUBMIT</h3>

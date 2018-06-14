@@ -51,41 +51,49 @@ export default class ListItem extends React.Component {
             footer={null}
           >
             <form className="update-form" onSubmit={this.props.onSubmitUpdate}>
-              <label htmlFor="title" />
-              <input
-                type="text"
-                name="title"
-                rows="2"
-                cols="50"
-                id="title"
-                defaultValue={this.props.item.title}
-              />
-              <label htmlFor="date" />
-              <input
-                type="text"
-                name="date"
-                rows="2"
-                cols="50"
-                id="date"
-                defaultValue={this.props.item.date}
-              />
-              <label htmlFor="time" />
-              <input
-                type="text"
-                name="time"
-                id="time"
-                size="20"
-                defaultValue={this.props.item.time}
-              />
-              <label htmlFor="description" />
-              <input
-                type="text"
-                name="description"
-                id="description"
-                size="35"
-                defaultValue={this.props.item.description}
-              />
-              <input type="text" name="id" defaultValue={this.props.item.id} id="id" />
+              <label htmlFor="title">
+                Title:
+                <input
+                  type="text"
+                  name="title"
+                  rows="2"
+                  cols="50"
+                  id="title"
+                  defaultValue={this.props.item.title}
+                />
+              </label>
+              <label htmlFor="date">
+                Date:
+                <input
+                  type="text"
+                  name="date"
+                  rows="2"
+                  cols="50"
+                  id="date"
+                  defaultValue={this.props.item.date}
+                />
+              </label>
+              <label htmlFor="time">
+                Time:
+                <input
+                  type="text"
+                  name="time"
+                  id="time"
+                  size="20"
+                  defaultValue={this.props.item.time}
+                />
+              </label>
+              <label htmlFor="description">
+                Description:
+                <input
+                  type="text"
+                  name="description"
+                  id="description"
+                  size="35"
+                  defaultValue={this.props.item.description}
+                />
+              </label>
+              <input type="hidden" name="id" defaultValue={this.props.item.id} id="id" />
               <button type="submit" value="Submit">
                 <h3>SUBMIT</h3>
               </button>
