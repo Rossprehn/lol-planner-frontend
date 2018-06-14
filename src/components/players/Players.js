@@ -1,6 +1,6 @@
 import React from 'react'
 import Add from './AddNewPlayer.js'
-import { Button, Icon, Select, Modal } from 'antd'
+import { Button, Icon, Modal } from 'antd'
 import ListPlayers from './ListPlayers'
 
 export class List extends React.Component {
@@ -92,7 +92,7 @@ export class List extends React.Component {
     e.preventDefault()
     const form = e.target
     const data = new FormData(form)
-    const players = this.state.players
+    // const players = this.state.players
     const player = {
       id: data.get('id'),
       name: data.get('name'),

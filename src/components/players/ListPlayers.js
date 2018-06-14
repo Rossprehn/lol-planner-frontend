@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button, Icon, Select, Modal, Calendar } from 'antd'
+import { Button, Icon, Modal } from 'antd'
 
 export default class ListPlayers extends React.Component {
   state = {

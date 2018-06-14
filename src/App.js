@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
-import logo from './logo.svg'
 import Header from './components/header/Header.js'
 import { Section } from './components/EventListings.js'
-import { List } from './components/Players.js'
+import { List } from './components/players/Players.js'
 import AddEvent from './components/AddNewEvent.js'
 import { Modal, Button, Icon } from 'antd'
 
@@ -10,7 +9,7 @@ import './css/reset.css'
 // import './App.css'
 
 // var baseUrl = 'https://lol-planner.herokuapp.com/'
-var baseUrl = 'http://localhost3000'
+// var baseUrl = 'http://localhost3000'
 
 class App extends Component {
   state = {
@@ -87,7 +86,7 @@ class App extends Component {
     e.preventDefault()
     const form = e.target
     const data = new FormData(form)
-    const events = this.state.events
+    // const events = this.state.events
     const event = {
       id: data.get('id'),
       title: data.get('title'),
@@ -119,7 +118,6 @@ class App extends Component {
     return (
       <div className="App">
         <Header />
-
         <Section
           events={this.state.events}
           getEvents={this.getEvents}
