@@ -118,26 +118,28 @@ class App extends Component {
     return (
       <div className="App">
         <Header />
-        <Section
-          events={this.state.events}
-          getEvents={this.getEvents}
-          onSubmitUpdate={this.onSubmitUpdate}
-        />
-        <div>
-          <Button type="primary" onClick={this.showModal}>
-            Add Event <Icon type="plus" />
-          </Button>
-          <Modal
-            title="Add Event"
-            visible={this.state.visible}
-            onOk={this.handleOk}
-            onCancel={this.handleCancel}
-            footer={null}
-          >
-            <AddEvent onSubmit={this.onSubmit} />
-          </Modal>
+        <div className="body">
+          <Section
+            events={this.state.events}
+            getEvents={this.getEvents}
+            onSubmitUpdate={this.onSubmitUpdate}
+          />
+          <div>
+            <Button type="primary" onClick={this.showModal}>
+              Add Event <Icon type="plus" />
+            </Button>
+            <Modal
+              title="Add Event"
+              visible={this.state.visible}
+              onOk={this.handleOk}
+              onCancel={this.handleCancel}
+              footer={null}
+            >
+              <AddEvent onSubmit={this.onSubmit} />
+            </Modal>
+          </div>
+          <List players={this.state.players} getEvents={this.getEvents} />
         </div>
-        <List players={this.state.players} getEvents={this.getEvents} />
       </div>
     )
   }

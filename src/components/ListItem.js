@@ -27,12 +27,16 @@ export default class ListItem extends React.Component {
 
   render() {
     return (
-      <li key={this.props.item.id}>
-        <h3>Event {this.props.item.title}</h3>
-        <small>Date: {this.props.item.date}</small>
-        <p>Time: {this.props.item.time}</p>
-        <p>Description: {this.props.item.description}</p>
-        <div>
+      <li className="eventCard" key={this.props.item.id}>
+        <div className="eventInfo">
+          <h3>
+            Event: <small className="eventName">{this.props.item.title}</small>
+          </h3>
+          <p className="dateDisplay">Date: {this.props.item.date}</p>
+          <p className="timeDisplay">Time: {this.props.item.time}</p>
+          <p className="descriptionDisplay">Description: {this.props.item.description}</p>
+        </div>
+        <div className="buttonBox">
           <Button
             type="danger"
             className="delete"

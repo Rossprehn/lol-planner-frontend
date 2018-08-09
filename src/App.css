@@ -19,6 +19,31 @@ h1 {
 }
 h4 {
   font-size: 1.5rem;
+  margin-left: 2rem;
+}
+.body {
+  margin: 2rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.eventCard {
+  border: 2px silver solid;
+  border-radius: 7px;
+  padding: 0.7rem;
+  margin: 1rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+h3 {
+  font-size: 1.2rem;
+}
+.buttonBox {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 1rem;
 }
 
 /* .App-title {
