@@ -35,16 +35,18 @@ export default class ListPlayers extends React.Component {
           <p>primary : {this.props.item.primary}</p>
           <p>secondary: {this.props.item.secondary}</p>
         </div>
-        <Button
-          type="danger"
-          className="delete"
-          onClick={() => this.props.deleteThisPlayer(this.props.item.id)}
-        >
-          Delete <Icon type="delete" />
-        </Button>
-        <Button type="primary" onClick={this.showModal}>
-          Update <Icon type="edit" />
-        </Button>
+        <div className="buttonBox">
+          <Button
+            type="danger"
+            className="delete"
+            onClick={() => this.props.deleteThisPlayer(this.props.item.id)}
+          >
+            Delete <Icon type="delete" />
+          </Button>
+          <Button type="primary" onClick={this.showModal}>
+            Update <Icon type="edit" />
+          </Button>
+        </div>
         <Modal
           title="update this event"
           visible={this.state.visible}

@@ -67,7 +67,6 @@ export class List extends React.Component {
       secondary: data.get('secondary'),
       rank: data.get('rank')
     }
-    console.log(player)
     this.addPlayer(player)
     this.setState({ players })
     e.target.reset()
@@ -92,7 +91,6 @@ export class List extends React.Component {
     e.preventDefault()
     const form = e.target
     const data = new FormData(form)
-    // const players = this.state.players
     const player = {
       id: data.get('id'),
       name: data.get('name'),
@@ -133,22 +131,24 @@ export class List extends React.Component {
   render() {
     return (
       <section>
-        <h4>players</h4>
-        <ul id="game-players">{this.props.players.map(this.createListPlayers)}</ul>
-        <div>
-          <Button type="primary" onClick={this.showModal}>
-            Add Player <Icon type="plus" />
-          </Button>
-          <Modal
-            title="Add Player"
-            visible={this.state.visible}
-            onOk={this.handleOk}
-            onCancel={this.handleCancel}
-            footer={null}
-          >
-            <Add onSubmit={this.onSubmit} />
-          </Modal>
+        <div className="playersHeader">
+          <h4>Current players</h4>
+          <div>
+            <Button type="primary" onClick={this.showModal}>
+              Add Player <Icon type="plus" />
+            </Button>
+            <Modal
+              title="Add Player"
+              visible={this.state.visible}
+              onOk={this.handleOk}
+              onCancel={this.handleCancel}
+              footer={null}
+            >
+              <Add onSubmit={this.onSubmit} />
+            </Modal>
+          </div>
         </div>
+        <ul id="game-players">{this.props.players.map(this.createListPlayers)}</ul>
       </section>
     )
   }
