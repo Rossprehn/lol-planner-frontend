@@ -1,11 +1,16 @@
 import React from 'react'
 import ListItem from './ListItem'
+import AddEvent from './AddNewEvent.js'
+import { Modal, Button, Icon } from 'antd'
 
 export class Section extends React.Component {
   constructor(props) {
     super(props)
     this.createListItem = this.createListItem.bind(this)
     this.deleteEvent = this.deleteEvent.bind(this)
+  }
+  state = {
+    visible: false
   }
 
   deleteEvent = e => {
@@ -42,7 +47,24 @@ export class Section extends React.Component {
   render() {
     return (
       <section>
-        <h4>upcoming events</h4>
+        <div className="playersHeader">
+          <h4>Upcoming events</h4>
+          <div>
+            <Button type="primary" onClick={this.showModal}>
+              Add Event <Icon type="plus" />
+            </Button>
+
+            <Modal
+              title="Add Event"
+              visible={this.state.visible}
+              onOk={this.handleOk}
+              onCancel={this.handleCancel}
+              footer={null}
+            >
+              <AddEvent onSubmit={this.onSubmit} />
+            </Modal>
+          </div>
+        </div>
         <ul id="game-events">{this.props.events.map(this.createListItem)}</ul>
       </section>
     )

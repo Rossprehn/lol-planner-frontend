@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
 import Header from './components/header/Header.js'
-import { Section } from './components/EventListings.js'
+import { Section } from './components/events/EventListings.js'
 import { List } from './components/players/Players.js'
-import AddEvent from './components/AddNewEvent.js'
 import { Modal, Button, Icon } from 'antd'
 
 import './css/reset.css'
@@ -123,21 +122,9 @@ class App extends Component {
             events={this.state.events}
             getEvents={this.getEvents}
             onSubmitUpdate={this.onSubmitUpdate}
+            addEvent={this.AddEvent}
           />
-          <div>
-            <Button type="primary" onClick={this.showModal}>
-              Add Event <Icon type="plus" />
-            </Button>
-            <Modal
-              title="Add Event"
-              visible={this.state.visible}
-              onOk={this.handleOk}
-              onCancel={this.handleCancel}
-              footer={null}
-            >
-              <AddEvent onSubmit={this.onSubmit} />
-            </Modal>
-          </div>
+
           <List players={this.state.players} getEvents={this.getEvents} />
         </div>
       </div>
