@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
 import Header from './components/header/Header.js'
-import { Section } from './components/events/EventListings.js'
+import { Section } from './components/events/Events.js'
 import { List } from './components/players/Players.js'
-import { Modal, Button, Icon } from 'antd'
 
 import './css/reset.css'
 // import './App.css'
@@ -13,8 +12,7 @@ import './css/reset.css'
 class App extends Component {
   state = {
     events: [],
-    players: [],
-    visible: false
+    players: []
   }
 
   showModal = () => {

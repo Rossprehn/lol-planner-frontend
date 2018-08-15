@@ -1,5 +1,5 @@
 import React from 'react'
-import ListItem from './ListItem'
+import ListItem from './ListEvents'
 import AddEvent from './AddNewEvent.js'
 import { Modal, Button, Icon } from 'antd'
 
@@ -11,6 +11,24 @@ export class Section extends React.Component {
   }
   state = {
     visible: false
+  }
+
+  showModal = () => {
+    this.setState({
+      visible: true
+    })
+  }
+  handleOk = e => {
+    console.log(e)
+    this.setState({
+      visible: false
+    })
+  }
+  handleCancel = e => {
+    console.log(e)
+    this.setState({
+      visible: false
+    })
   }
 
   deleteEvent = e => {
@@ -53,7 +71,6 @@ export class Section extends React.Component {
             <Button type="primary" onClick={this.showModal}>
               Add Event <Icon type="plus" />
             </Button>
-
             <Modal
               title="Add Event"
               visible={this.state.visible}
