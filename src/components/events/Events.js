@@ -1,6 +1,6 @@
 import React from 'react'
 import ListItem from './ListEvents'
-import AddEvent from './AddNewEvent.js'
+import AddEvent from './NewEvent.js'
 import { Modal, Button, Icon } from 'antd'
 
 export class Section extends React.Component {
