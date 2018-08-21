@@ -1,6 +1,6 @@
 import React from 'react'
 import ListItem from './ListEvents'
-import AddEvent from './NewEvent.js'
+import AddEvent from './AddNewEvent.js'
 import { Modal, Button, Icon } from 'antd'
 
 export class Section extends React.Component {
@@ -8,6 +8,7 @@ export class Section extends React.Component {
     super(props)
     this.createListItem = this.createListItem.bind(this)
     this.deleteEvent = this.deleteEvent.bind(this)
+    this.onSubmit = this.onSubmit.bind(this)
   }
   state = {
     visible: false
@@ -32,7 +33,7 @@ export class Section extends React.Component {
   }
 
   deleteEvent = e => {
-    this.props.deleteEvent(this.state.item)
+    this.deleteEvent(this.state.item)
   }
 
   deleteThisEvent = id => {
@@ -52,13 +53,75 @@ export class Section extends React.Component {
     this.deleteThisEvent(data.get('id'))
   }
 
+  onSubmit = e => {
+    e.preventDefault()
+    const form = e.target
+    const data = new FormData(form)
+    const events = this.state.events
+    const event = {
+      title: data.get('title'),
+      date: data.get('date'),
+      time: data.get('time'),
+      description: data.get('description')
+    }
+    this.addEvent(event)
+    this.setState({ events })
+    e.target.reset()
+  }
+
+  addEvent = event => {
+    fetch('https://lol-planner.herokuapp.com/event', {
+      method: 'POST',
+      body: JSON.stringify(event),
+      headers: new Headers({
+        'Content-Type': 'application/json'
+      })
+    })
+      .then(res => res.json())
+      .then(data => {
+        this.props.getEvents()
+      })
+      .catch(error => console.error('Error:', error))
+  }
+
+  onSubmitUpdate = e => {
+    e.preventDefault()
+    const form = e.target
+    const data = new FormData(form)
+    const event = {
+      id: data.get('id'),
+      title: data.get('title'),
+      date: data.get('date'),
+      time: data.get('time'),
+      description: data.get('description')
+    }
+    console.log(event)
+    this.updateEvent(event)
+  }
+
+  updateEvent = event => {
+    let url = 'https://lol-planner.herokuapp.com/event/' + event.id
+    fetch(url, {
+      method: 'PUT',
+      body: JSON.stringify(event),
+      headers: new Headers({
+        'Content-Type': 'application/json'
+      })
+    })
+      .then(res => res.json())
+      .then(data => {
+        this.props.getEvents()
+      })
+      .catch(error => console.error('Error:', error))
+  }
+
   createListItem(item) {
     return (
       <ListItem
         key={item.id}
         item={item}
         deleteThisEvent={this.deleteThisEvent}
-        onSubmitUpdate={this.props.onSubmitUpdate}
+        onSubmitUpdate={this.onSubmitUpdate}
       />
     )
   }

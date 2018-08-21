@@ -1,11 +1,13 @@
 import React from 'react'
-import { DatePicker, TimePicker } from 'antd'
+import { DatePicker, TimePicker, Button, Form } from 'antd'
 import moment from 'moment'
 
 const { MonthPicker, RangePicker } = DatePicker
 
+const FormItem = Form.Item
 const dateFormat = 'YYYY/MM/DD'
 const monthFormat = 'YYYY/MM'
+var now = moment()
 
 function onChange(time, timeString) {
   console.log(time, timeString)
@@ -18,7 +20,7 @@ export default function Form({ onSubmit }) {
       <input name="title" rows="2" cols="50" id="title" placeholder="Enter title here..." />
       <br />
       <label htmlFor="date" />
-      <DatePicker defaultValue={moment('2015/01/01', dateFormat)} format={dateFormat} />
+      <DatePicker name="date" defaultValue={moment(now, dateFormat)} format={dateFormat} />
       <br />
       <TimePicker use12Hours format="h:mm a" onChange={onChange} />
       <br />
@@ -30,7 +32,6 @@ export default function Form({ onSubmit }) {
         placeholder="What kind of event?"
       />
       <br />
-
       <button type="submit" value="Submit">
         <h3>SUBMIT</h3>
       </button>

@@ -47,81 +47,75 @@ class App extends Component {
         })
       })
   }
-
-  onSubmit = e => {
-    e.preventDefault()
-    const form = e.target
-    const data = new FormData(form)
-    const events = this.state.events
-    const event = {
-      title: data.get('title'),
-      date: data.get('date'),
-      time: data.get('time'),
-      description: data.get('description')
-    }
-    this.addEvent(event)
-    this.setState({ events })
-    e.target.reset()
-  }
-
-  addEvent = event => {
-    fetch('https://lol-planner.herokuapp.com/event', {
-      method: 'POST',
-      body: JSON.stringify(event),
-      headers: new Headers({
-        'Content-Type': 'application/json'
-      })
-    })
-      .then(res => res.json())
-      .then(data => {
-        this.getEvents()
-      })
-      .catch(error => console.error('Error:', error))
-  }
-
-  onSubmitUpdate = e => {
-    e.preventDefault()
-    const form = e.target
-    const data = new FormData(form)
-    // const events = this.state.events
-    const event = {
-      id: data.get('id'),
-      title: data.get('title'),
-      date: data.get('date'),
-      time: data.get('time'),
-      description: data.get('description')
-    }
-    console.log(event)
-    this.updateEvent(event)
-  }
-
-  updateEvent = event => {
-    let url = 'https://lol-planner.herokuapp.com/event/' + event.id
-    fetch(url, {
-      method: 'PUT',
-      body: JSON.stringify(event),
-      headers: new Headers({
-        'Content-Type': 'application/json'
-      })
-    })
-      .then(res => res.json())
-      .then(data => {
-        this.getEvents()
-      })
-      .catch(error => console.error('Error:', error))
-  }
+  //
+  // onSubmit = e => {
+  //   e.preventDefault()
+  //   const form = e.target
+  //   const data = new FormData(form)
+  //   const events = this.state.events
+  //   const event = {
+  //     title: data.get('title'),
+  //     date: data.get('date'),
+  //     time: data.get('time'),
+  //     description: data.get('description')
+  //   }
+  //   this.addEvent(event)
+  //   this.setState({ events })
+  //   e.target.reset()
+  // }
+  //
+  // addEvent = event => {
+  //   fetch('https://lol-planner.herokuapp.com/event', {
+  //     method: 'POST',
+  //     body: JSON.stringify(event),
+  //     headers: new Headers({
+  //       'Content-Type': 'application/json'
+  //     })
+  //   })
+  //     .then(res => res.json())
+  //     .then(data => {
+  //       this.getEvents()
+  //     })
+  //     .catch(error => console.error('Error:', error))
+  // }
+  //
+  // onSubmitUpdate = e => {
+  //   e.preventDefault()
+  //   const form = e.target
+  //   const data = new FormData(form)
+  //   const event = {
+  //     id: data.get('id'),
+  //     title: data.get('title'),
+  //     date: data.get('date'),
+  //     time: data.get('time'),
+  //     description: data.get('description')
+  //   }
+  //   console.log(event)
+  //   this.updateEvent(event)
+  // }
+  //
+  // updateEvent = event => {
+  //   let url = 'https://lol-planner.herokuapp.com/event/' + event.id
+  //   fetch(url, {
+  //     method: 'PUT',
+  //     body: JSON.stringify(event),
+  //     headers: new Headers({
+  //       'Content-Type': 'application/json'
+  //     })
+  //   })
+  //     .then(res => res.json())
+  //     .then(data => {
+  //       this.getEvents()
+  //     })
+  //     .catch(error => console.error('Error:', error))
+  // }
 
   render() {
     return (
       <div className="App">
         <Header />
         <div className="body">
-          <Section
-            events={this.state.events}
-            getEvents={this.getEvents}
-            onSubmitUpdate={this.onSubmitUpdate}
-            addEvent={this.AddEvent}
-          />
+          <Section events={this.state.events} getEvents={this.getEvents} />
 
           <List players={this.state.players} getEvents={this.getEvents} />
         </div>
