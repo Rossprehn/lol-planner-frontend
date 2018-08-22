@@ -66,6 +66,7 @@ export default class ListItem extends React.Component {
                   defaultValue={this.props.item.title}
                 />
               </label>
+              <br />
               <label htmlFor="date">
                 Date:
                 <input
@@ -77,6 +78,7 @@ export default class ListItem extends React.Component {
                   defaultValue={this.props.item.date}
                 />
               </label>
+              <br />
               <label htmlFor="time">
                 Time:
                 <input
@@ -87,6 +89,7 @@ export default class ListItem extends React.Component {
                   defaultValue={this.props.item.time}
                 />
               </label>
+              <br />
               <label htmlFor="description">
                 Description:
                 <input
@@ -97,6 +100,7 @@ export default class ListItem extends React.Component {
                   defaultValue={this.props.item.description}
                 />
               </label>
+              <br />
               <input type="hidden" name="id" defaultValue={this.props.item.id} id="id" />
               <button type="submit" value="Submit">
                 <h3>SUBMIT</h3>

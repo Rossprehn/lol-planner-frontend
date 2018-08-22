@@ -62,3 +62,11 @@ h3 {
   flex-direction: row;
   justify-content: space-between;
 }
+
+#form {
+  margin: 0.4rem;
+  padding: 0.4rem;
+}
+br {
+  margin: 0.4rem;
+}

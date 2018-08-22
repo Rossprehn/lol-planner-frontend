@@ -5,6 +5,7 @@ export default function Form({ onSubmit }) {
     <form className="addform" id="form" onSubmit={onSubmit}>
       <label htmlFor="name" />
       <input name="name" type="text" side="20" id="name" placeholder="Enter name here..." />
+      <br />
       <label htmlFor="primary" />
       <input
         name="primary"
@@ -13,6 +14,7 @@ export default function Form({ onSubmit }) {
         id="primary"
         placeholder="Enter primary role here..."
       />
+      <br />
       <label htmlFor="secondary" />
       <input
         type="text"
@@ -21,8 +23,10 @@ export default function Form({ onSubmit }) {
         size="20"
         placeholder="Enter secondary role here..."
       />
+      <br />
       <label htmlFor="rank" />
       <input type="text" name="rank" id="rank" size="35" placeholder="what is your current Rank" />
+      <br />
       <button type="submit" value="Submit">
         <h3>SUBMIT</h3>
       </button>

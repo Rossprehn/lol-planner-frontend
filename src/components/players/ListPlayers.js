@@ -66,6 +66,7 @@ export default class ListPlayers extends React.Component {
                 defaultValue={this.props.item.name}
               />
             </label>
+            <br />
             <label htmlFor="primary">
               Primary role:
               <input
@@ -77,6 +78,7 @@ export default class ListPlayers extends React.Component {
                 defaultValue={this.props.item.primary}
               />
             </label>
+            <br />
             <label htmlFor="secondary">
               Secondary Role:
               <input
@@ -87,6 +89,7 @@ export default class ListPlayers extends React.Component {
                 defaultValue={this.props.item.secondary}
               />
             </label>
+            <br />
             <label htmlFor="rank">
               Rank:
               <input
@@ -97,6 +100,7 @@ export default class ListPlayers extends React.Component {
                 defaultValue={this.props.item.rank}
               />
             </label>
+            <br />
             <input type="hidden" name="id" defaultValue={this.props.item.id} id="id" />
 
             <button type="submit" value="Submit">
