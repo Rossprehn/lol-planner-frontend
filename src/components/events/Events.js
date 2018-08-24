@@ -8,7 +8,6 @@ export class Section extends React.Component {
     super(props)
     this.createListItem = this.createListItem.bind(this)
     this.deleteEvent = this.deleteEvent.bind(this)
-    this.onSubmit = this.onSubmit.bind(this)
   }
   state = {
     visible: false

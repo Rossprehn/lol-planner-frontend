@@ -102,7 +102,6 @@ export default class ListPlayers extends React.Component {
             </label>
             <br />
             <input type="hidden" name="id" defaultValue={this.props.item.id} id="id" />
-
             <button type="submit" value="Submit">
               <h3>SUBMIT</h3>
             </button>
