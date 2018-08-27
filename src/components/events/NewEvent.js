@@ -1,32 +1,48 @@
 import React from 'react'
-import { DatePicker, TimePicker, Button } from 'antd'
+import { DatePicker, TimePicker } from 'antd'
 import moment from 'moment'
 
-const { MonthPicker, RangePicker } = DatePicker
+const { MonthPicker } = DatePicker
 
-const date = 'YYYY/MM/DD'
+const date = 'YYYY-MM-DD'
 const monthFormat = 'YYYY/MM'
 var now = moment()
 
-function onChange(time, timeString) {
-  console.log(time, timeString)
+// function onChange(time, timeString) {
+//   console.log(time, timeString)
+// }
+
+// function onChange(value, dateString) {
+//   console.log('Selected Time: ', value)
+//   console.log('Formatted Selected Time: ', dateString)
+// }
+
+function onChange(date, dateString) {
+  console.log(date, dateString)
 }
+
+function onOk(value) {
+  console.log('onOk: ', value)
+}
+
 export default function Form({ onSubmit }) {
   return (
     <form className="addform" id="form" onSubmit={onSubmit}>
       <label htmlFor="title" />
       <input name="title" rows="2" cols="50" id="title" placeholder="Enter title here..." />
       <br />
-      <label htmlFor="date" />
-
-      <DatePicker name="date" defaultValue={moment(now, date)} format={date} />
-
-      <input name="date" rows="2" cols="50" id="date" placeholder="Enter date here..." />
+      <DatePicker
+        name="date"
+        defaultValue={moment(now, date)}
+        format={date}
+        onChange={onChange}
+        showTime
+        format="YYYY-MM-DD"
+      />
+      <label htmlFor={date} />
       <br />
-      <TimePicker use12Hours format="h:mm a" onChange={onChange} />
-
+      <TimePicker name="time" use12Hours format="h:mm a" />
       <label htmlFor="time" />
-      <input type="text" name="time" id="time" size="20" placeholder="Enter time of event..." />
       <br />
       <label htmlFor="description" />
       <input

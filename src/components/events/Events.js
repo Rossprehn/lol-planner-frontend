@@ -1,6 +1,6 @@
 import React from 'react'
 import ListItem from './ListEvents'
-import AddEvent from './AddNewEvent.js'
+import AddEvent from './NewEvent.js'
 import { Modal, Button, Icon } from 'antd'
 
 export class Section extends React.Component {
@@ -64,6 +64,7 @@ export class Section extends React.Component {
       description: data.get('description')
     }
     this.addEvent(event)
+    console.log(event)
     this.setState({ events })
     e.target.reset()
   }
