@@ -1,28 +1,18 @@
 import React from 'react'
 import { DatePicker, TimePicker } from 'antd'
 import moment from 'moment'
+import 'moment/locale/zh-cn'
 
 const { MonthPicker } = DatePicker
+
+const dateFormat = 'YYYY-MM-DD'
 
 const date = 'YYYY-MM-DD'
 const monthFormat = 'YYYY/MM'
 var now = moment()
 
-// function onChange(time, timeString) {
-//   console.log(time, timeString)
-// }
-
-// function onChange(value, dateString) {
-//   console.log('Selected Time: ', value)
-//   console.log('Formatted Selected Time: ', dateString)
-// }
-
 function onChange(date, dateString) {
   console.log(date, dateString)
-}
-
-function onOk(value) {
-  console.log('onOk: ', value)
 }
 
 export default function Form({ onSubmit }) {
@@ -31,17 +21,16 @@ export default function Form({ onSubmit }) {
       <label htmlFor="title" />
       <input name="title" rows="2" cols="50" id="title" placeholder="Enter title here..." />
       <br />
-      <DatePicker
-        name="date"
-        defaultValue={moment(now, date)}
-        format={date}
-        onChange={onChange}
-        showTime
-        format="YYYY-MM-DD"
-      />
-      <label htmlFor={date} />
+      <label htmlFor="date">
+        <DatePicker
+          defaultValue={moment(now, dateFormat)}
+          format={dateFormat}
+          name="date"
+          id="date"
+        />
+      </label>
       <br />
-      <TimePicker name="time" use12Hours format="h:mm a" />
+      <TimePicker name="time" use12Hours minuteStep={15} format="h:mm a" />
       <label htmlFor="time" />
       <br />
       <label htmlFor="description" />

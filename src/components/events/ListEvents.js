@@ -1,5 +1,6 @@
 import React from 'react'
-import { Button, Icon, Modal } from 'antd'
+import { Button, Icon, Modal, TimePicker, DatePicker } from 'antd'
+import moment from 'moment'
 
 export default class ListItem extends React.Component {
   state = {
@@ -26,6 +27,12 @@ export default class ListItem extends React.Component {
   }
 
   render() {
+    function onChange(time, timeString) {
+      console.log(time, timeString)
+    }
+
+    const format = 'HH:mm'
+
     return (
       <li className="eventCard" key={this.props.item.id}>
         <div className="eventInfo">
@@ -67,28 +74,17 @@ export default class ListItem extends React.Component {
                 />
               </label>
               <br />
-              <label htmlFor="date">
-                Date:
-                <input
-                  type="text"
-                  name="date"
-                  rows="2"
-                  cols="50"
-                  id="date"
-                  defaultValue={this.props.item.date}
-                />
-              </label>
+              <label htmlFor="date" />
+              <DatePicker name="date" defaultValue={moment(this.props.item.date, 'YYYY-MM-DD')} />
               <br />
-              <label htmlFor="time">
-                Time:
-                <input
-                  type="text"
-                  name="time"
-                  id="time"
-                  size="20"
-                  defaultValue={this.props.item.time}
-                />
-              </label>
+              <label htmlFor="time" />
+              <TimePicker
+                name="time"
+                use12Hours
+                minuteStep={15}
+                defaultValue={moment(this.props.item.time, format)}
+              />
+
               <br />
               <label htmlFor="description">
                 Description:
