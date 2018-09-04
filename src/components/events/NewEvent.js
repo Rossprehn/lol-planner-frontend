@@ -4,10 +4,10 @@ import moment from 'moment'
 import 'moment/locale/zh-cn'
 
 const { MonthPicker } = DatePicker
+let defaultValue = moment('2018-12-12')
 
 const dateFormat = 'YYYY-MM-DD'
 
-const date = 'YYYY-MM-DD'
 const monthFormat = 'YYYY/MM'
 var now = moment()
 
@@ -21,14 +21,9 @@ export default function Form({ onSubmit }) {
       <label htmlFor="title" />
       <input name="title" rows="2" cols="50" id="title" placeholder="Enter title here..." />
       <br />
-      <label htmlFor="date">
-        <DatePicker
-          defaultValue={moment(now, dateFormat)}
-          format={dateFormat}
-          name="date"
-          id="date"
-        />
-      </label>
+      <label htmlFor="date" />
+      <input name="date" rows="2" cols="50" id="date" defaultValue={defaultValue} />
+      <DatePicker defaultValue={moment(now, dateFormat)} format={dateFormat} onChange={onChange} />
       <br />
       <TimePicker name="time" use12Hours minuteStep={15} format="h:mm a" />
       <label htmlFor="time" />
