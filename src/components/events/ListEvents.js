@@ -74,8 +74,17 @@ export default class ListItem extends React.Component {
                 />
               </label>
               <br />
-              <label htmlFor="date" />
-              <DatePicker name="date" defaultValue={moment(this.props.item.date, 'YYYY-MM-DD')} />
+              <label htmlFor="date">
+                Date:
+                <input
+                  type="text"
+                  name="date"
+                  rows="2"
+                  cols="50"
+                  id="date"
+                  defaultValue={this.props.item.date}
+                />
+              </label>
               <br />
               <label htmlFor="time" />
               <TimePicker
