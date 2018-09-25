@@ -1,6 +1,12 @@
 import React from 'react'
+import { message } from 'antd'
 
 export default function Form({ onSubmit }) {
+
+  const success = () => {
+    message.success('This is a message of success');
+  };
+
   return (
     <form className="addform" id="form" onSubmit={onSubmit}>
       <label htmlFor="name" />
@@ -27,7 +33,7 @@ export default function Form({ onSubmit }) {
       <label htmlFor="rank" />
       <input type="text" name="rank" id="rank" size="35" placeholder="what is your current Rank" />
       <br />
-      <button type="submit" value="Submit">
+      <button onClick={success} type="submit" value="Submit">
         <h3>SUBMIT</h3>
       </button>
     </form>

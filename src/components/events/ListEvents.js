@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button, Icon, Modal, TimePicker, DatePicker } from 'antd'
+import { Button, Icon, Modal, TimePicker } from 'antd'
 import moment from 'moment'
 
 export default class ListItem extends React.Component {
