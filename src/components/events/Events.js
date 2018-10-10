@@ -2,6 +2,7 @@ import React from 'react'
 import ListItem from './ListEvents'
 import AddEvent from './AddNewEvent'
 import { Modal, Button, Icon } from 'antd'
+import Success from './Message'
 
 
 export class Section extends React.Component {
@@ -116,6 +117,7 @@ export class Section extends React.Component {
         this.props.getEvents()
       })
       .catch(error => console.error('Error:', error))
+      Success()
   }
 
   createListItem(item) {
