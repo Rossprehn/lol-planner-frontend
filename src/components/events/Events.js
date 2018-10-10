@@ -1,9 +1,8 @@
 import React from 'react'
 import ListItem from './ListEvents'
-import AddEvent from './AddNewEvent'
+import AddEvent from './AddNewEvent.js'
 import { Modal, Button, Icon } from 'antd'
-import Success from './Message'
-
+import Success from 'Message'
 
 export class Section extends React.Component {
   constructor(props) {
@@ -20,14 +19,12 @@ export class Section extends React.Component {
       visible: true
     })
   }
-
   handleOk = e => {
     console.log(e)
     this.setState({
       visible: false
     })
   }
-
   handleCancel = e => {
     console.log(e)
     this.setState({
@@ -68,7 +65,7 @@ export class Section extends React.Component {
       description: data.get('description')
     }
     this.addEvent(event)
-    console.log(event)
+    console.log(e)
     this.setState({ events })
     e.target.reset()
   }
@@ -144,7 +141,7 @@ export class Section extends React.Component {
               visible={this.state.visible}
               onOk={this.handleOk}
               onCancel={this.handleCancel}
-              // footer={null}
+              footer={null}
             >
               <AddEvent onSubmit={this.onSubmit} />
             </Modal>

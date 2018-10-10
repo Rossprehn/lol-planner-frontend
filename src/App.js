@@ -54,7 +54,6 @@ class App extends Component {
         <Header />
         <div className="body">
           <Section events={this.state.events} getEvents={this.getEvents} />
-
           <List players={this.state.players} getEvents={this.getEvents} />
         </div>
       </div>
