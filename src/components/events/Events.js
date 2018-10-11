@@ -2,7 +2,9 @@ import React from 'react'
 import ListItem from './ListEvents'
 import AddEvent from './AddNewEvent.js'
 import { Modal, Button, Icon } from 'antd'
-import Success from 'Message'
+import Success from './Message'
+// import Delete from './Delete'
+
 
 export class Section extends React.Component {
   constructor(props) {
@@ -45,6 +47,7 @@ export class Section extends React.Component {
     })
       .then(response => this.props.getEvents())
       .catch(error => console.error('Error', error))
+      // Delete()
   }
 
   onDelete = e => {
@@ -83,6 +86,7 @@ export class Section extends React.Component {
         this.props.getEvents()
       })
       .catch(error => console.error('Error:', error))
+      Success()
   }
 
   onSubmitUpdate = e => {

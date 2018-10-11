@@ -25,6 +25,12 @@ export default class ListPlayers extends React.Component {
     })
   }
 
+  onClick = (e) => {
+    this.setState({
+      visible: false
+    })
+    }
+
   render() {
     return (
       <li className="playerCard" key={this.props.item.id}>
@@ -102,7 +108,7 @@ export default class ListPlayers extends React.Component {
             </label>
             <br />
             <input type="hidden" name="id" defaultValue={this.props.item.id} id="id" />
-            <button type="submit" value="Submit">
+            <button onClick={this.onClick} type="submit" value="Submit">
               <h3>SUBMIT</h3>
             </button>
           </form>

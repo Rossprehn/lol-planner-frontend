@@ -2,6 +2,8 @@ import React from 'react'
 import Add from './AddNewPlayer.js'
 import { Button, Icon, Modal } from 'antd'
 import ListPlayers from './ListPlayers'
+import Success from './../events/Message'
+import Error from './Delete'
 
 export class List extends React.Component {
   constructor(props) {
@@ -85,6 +87,7 @@ export class List extends React.Component {
         this.props.getEvents()
       })
       .catch(error => console.error('Error:', error))
+      Success()
   }
 
   onSubmitUpdate = e => {
@@ -116,6 +119,7 @@ export class List extends React.Component {
         this.props.getEvents()
       })
       .catch(error => console.error('Error:', error))
+      Success()
   }
 
   createListPlayers(item) {
