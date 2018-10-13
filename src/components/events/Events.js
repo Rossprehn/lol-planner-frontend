@@ -3,7 +3,7 @@ import ListItem from './ListEvents'
 import AddEvent from './AddNewEvent.js'
 import { Modal, Button, Icon } from 'antd'
 import Success from './Message'
-// import Delete from './Delete'
+import elete from './Delete'
 
 
 export class Section extends React.Component {
@@ -47,7 +47,7 @@ export class Section extends React.Component {
     })
       .then(response => this.props.getEvents())
       .catch(error => console.error('Error', error))
-      // Delete()
+      // delete()
   }
 
   onDelete = e => {
