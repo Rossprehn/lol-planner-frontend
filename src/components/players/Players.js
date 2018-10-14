@@ -3,7 +3,6 @@ import Add from './AddNewPlayer.js'
 import { Button, Icon, Modal } from 'antd'
 import ListPlayers from './ListPlayers'
 import Success from './../events/Message'
-import Error from './Delete'
 
 export class List extends React.Component {
   constructor(props) {
