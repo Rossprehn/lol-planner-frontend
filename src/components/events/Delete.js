@@ -1,7 +1,8 @@
 import { message } from 'antd'
 
-const Delete = () => {
-  message.error('this event has been delete!');
+const Warning = () => {
+  message.warning('This is message of warning');
 };
 
-export default Delete
+
+export default Warning

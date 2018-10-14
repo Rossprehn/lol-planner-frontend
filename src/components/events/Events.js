@@ -3,7 +3,7 @@ import ListItem from './ListEvents'
 import AddEvent from './AddNewEvent.js'
 import { Modal, Button, Icon } from 'antd'
 import Success from './Message'
-import elete from './Delete'
+import Warning from './Delete'
 
 
 export class Section extends React.Component {
@@ -11,6 +11,7 @@ export class Section extends React.Component {
     super(props)
     this.createListItem = this.createListItem.bind(this)
     this.deleteEvent = this.deleteEvent.bind(this)
+    this.handleOk = this.handleOk.bind(this)
   }
   state = {
     visible: false
@@ -47,7 +48,7 @@ export class Section extends React.Component {
     })
       .then(response => this.props.getEvents())
       .catch(error => console.error('Error', error))
-      // delete()
+      Warning()
   }
 
   onDelete = e => {
@@ -87,6 +88,7 @@ export class Section extends React.Component {
       })
       .catch(error => console.error('Error:', error))
       Success()
+      this.handleOk()
   }
 
   onSubmitUpdate = e => {
@@ -119,6 +121,7 @@ export class Section extends React.Component {
       })
       .catch(error => console.error('Error:', error))
       Success()
+      this.handleOk()
   }
 
   createListItem(item) {

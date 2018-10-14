@@ -12,6 +12,7 @@ export class List extends React.Component {
     this.createListPlayers = this.createListPlayers.bind(this)
     this.deletePlayer = this.deletePlayer.bind(this)
     // this.updatePlayer = this.updatePlayer.bind(this)
+    this.handleOk = this.handleOk.bind(this)
   }
   state = {
     visible: false
@@ -88,6 +89,7 @@ export class List extends React.Component {
       })
       .catch(error => console.error('Error:', error))
       Success()
+      this.handleOk()
   }
 
   onSubmitUpdate = e => {
@@ -120,6 +122,7 @@ export class List extends React.Component {
       })
       .catch(error => console.error('Error:', error))
       Success()
+      this.handleOk()
   }
 
   createListPlayers(item) {
