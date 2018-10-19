@@ -6,7 +6,8 @@ import { List } from './components/players/Players.js'
 import './css/reset.css'
 // import './App.css'
 
-// var baseUrl = 'https://lol-planner.herokuapp.com/'
+var baseUrl = 'https://lol-planner.herokuapp.com/'
+
 // var baseUrl = 'http://localhost3000'
 
 class App extends Component {
@@ -21,13 +22,11 @@ class App extends Component {
     })
   }
   handleOk = e => {
-    console.log(e)
     this.setState({
       visible: false
     })
   }
   handleCancel = e => {
-    console.log(e)
     this.setState({
       visible: false
     })
@@ -38,7 +37,7 @@ class App extends Component {
   }
 
   getEvents = () => {
-    fetch('https://lol-planner.herokuapp.com/')
+    fetch(baseUrl)
       .then(response => response.json())
       .then(data => {
         this.setState({
